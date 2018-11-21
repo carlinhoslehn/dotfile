@@ -1,0 +1,12 @@
+[user]
+	name = Carlos Eduardo
+	email = carlos@carlinhoslehn.com
+[core]
+	autocrlf = input
+	editor = nano
+[push]
+	default = simple
+[color]
+	ui = true
+[merge]
+	tool = meld
