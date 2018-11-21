@@ -15,7 +15,7 @@ Este projeto é para manter as personalizações dos meus ambientes de trabalho,
 
 ### Instalação
 A instalação se da da seguinte forma:
- bash -c "`curl -fsSL https://raw.githubusercontent.com/carlinhoslehn/dotfile/master/README.md`"
+ bash -c "`curl -fsSL https://raw.githubusercontent.com/carlinhoslehn/dotfile/master/install.sh`"
  Você pode (usar `git`), ou fazer o download (usar `curl` or `wget`), e colocar na pasta `~/.dotfiles`. Como alternativa, você pode clonar manualmente:
 
     git clone https://github.com/carlinhoslehn/dotfiles.git ~/.dotfiles
