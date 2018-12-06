@@ -2,7 +2,7 @@
 
 remover=(aspell-* brasero* firefox-esr-l10n-* myspell-* gnome-games)
 dependencia=(dirmngr apt-transport-https)
-instalacao=(sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
+instalacao=(bash-completion sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31mRemoveremos arquivos desnecessarios ;)\e[0m"
@@ -31,15 +31,11 @@ do
 	 else
 	  echo -e "\e[92m   - $item \e[1m Já instalado \e[0m"
 	fi
-
 done
 
 
 echo -e "\e[32m---------------------------------------------\e[0m"
-
 apt-get update && apt-get upgrade -y
-
-
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31m Instalando Chaves ;)\e[0m"
