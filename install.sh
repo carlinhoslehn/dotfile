@@ -2,7 +2,9 @@
 
 remover=(aspell-* brasero* firefox-esr-l10n-* myspell-* gnome-games)
 dependencia=(dirmngr apt-transport-https)
-instalacao=(meld sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
+==== BASE ====
+instalacao=(dbeaver-ce meld bash-completion sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
+==== BASE ====
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31mRemoveremos arquivos desnecessarios ;)\e[0m"
