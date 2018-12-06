@@ -2,7 +2,7 @@
 
 remover=(aspell-* brasero* firefox-esr-l10n-* myspell-* gnome-games)
 dependencia=(dirmngr apt-transport-https)
-instalacao=(sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
+instalacao=(meld sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31mRemoveremos arquivos desnecessarios ;)\e[0m"
@@ -77,6 +77,10 @@ echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list
 #Get Mysql Repository
 wget -O mysql.deb https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb && dpkg -i mysql.deb 
 rm mysql.deb 
+
+wget -O teamviewer.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && dpkg -i teamviewer.deb  
+rm teamviewer.deb 
+
 
 #Update no apt
 apt-get update
