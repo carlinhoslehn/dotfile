@@ -30,3 +30,18 @@ alias dc='docker-compose '
 alias c='php bin/console '
 alias dcu='docker-compose up -d'
 alias server='php bin/console server:start'
+
+alias project='cd ~/Project/'
+
+
+# GIT FLOW ALIASES
+
+alias gfi="git flow init"
+gcf()  { git checkout feature/$1; }
+gffs() { git flow feature start $1; }
+gfff() { git flow feature finish -F $(git_flow_current_branch); }
+
+gcr()  { git checkout release/$1;  }
+gfrs() { git flow release start $1; }
+gfrf() { git flow release finish -F $(git_flow_current_branch); }
+git_flow_current_branch(){ git rev-parse --abbrev-ref HEAD | cut -d'/' -f 2; }

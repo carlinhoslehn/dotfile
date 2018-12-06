@@ -2,14 +2,16 @@
 
 remover=(aspell-* brasero* firefox-esr-l10n-* myspell-* gnome-games)
 dependencia=(dirmngr apt-transport-https)
-instalacao=(sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br)
+==== BASE ====
+instalacao=(dbeaver-ce meld bash-completion sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
+==== BASE ====
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31mRemoveremos arquivos desnecessarios ;)\e[0m"
 echo -e "\e[32m---------------------------------------------\e[0m"
 
 #remover pacotes desnecessarios
-for item in ${array[*]}
+for item in ${remover[*]}
 do
     apt-get remove --purge -y $item
 done
@@ -44,16 +46,20 @@ apt-get update && apt-get upgrade -y
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31m Instalando Chaves ;)\e[0m"
 
+wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
+echo -e "\e[92m   - Chave Dbeaver \e[1m instalado \e[0m"
+
 #chave sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-  echo -e "\e[92m   - Chave Sublime \e[1m instalado \e[0m"
+echo -e "\e[92m   - Chave Sublime \e[1m instalado \e[0m"
 
 #spotify chave
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-  echo -e "\e[92m   - Chave Spotify \e[1m instalado \e[0m"
+echo -e "\e[92m   - Chave Spotify \e[1m instalado \e[0m"
+
 #chave google 
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  echo -e "\e[92m   - Chave Google \e[1m instalado \e[0m"
+echo -e "\e[92m   - Chave Google \e[1m instalado \e[0m"
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 
@@ -66,11 +72,17 @@ echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee
 #spotify
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
+#dbeaver
+echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
 
 
 #Get Mysql Repository
 wget -O mysql.deb https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb && dpkg -i mysql.deb 
 rm mysql.deb 
+
+wget -O teamviewer.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb && dpkg -i teamviewer.deb  
+rm teamviewer.deb 
+
 
 #Update no apt
 apt-get update
