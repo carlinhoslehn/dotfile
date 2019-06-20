@@ -3,10 +3,13 @@
 	email = carlos@carlinhoslehn.com
 [core]
 	autocrlf = input
-	editor = nano
+	editor = vim
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
 [color]
 	ui = true
 [merge]
 	tool = meld
+[diff]
+	algorithm = patience

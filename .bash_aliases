@@ -27,7 +27,7 @@ alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 alias dc='docker-compose '
-alias c='php bin/console '
+alias sc='php bin/console '
 alias dcu='docker-compose up -d'
 alias server='php bin/console server:start'
 

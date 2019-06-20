@@ -1,9 +1,9 @@
 #!/bin/bash
 
 remover=(aspell-* brasero* firefox-esr-l10n-* myspell-* gnome-games)
-dependencia=(dirmngr apt-transport-https)
+dependencia=(dirmngr apt-transport-https ca-certificates)
 ==== BASE ====
-instalacao=(dbeaver-ce meld bash-completion sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce)
+instalacao=(dbeaver-ce meld bash-completion sublime-text google-chrome-stable mysql-workbench vim git git-flow spotify-client hunspell-en hunspell-pt-br myspell-en myspell-pt-br firefox-esr-l10n-en-gb firefox-esr-l10n-pt-br dbeaver-ce php7.2-cli php7.2-common php7.2-curl php7.2-mbstring php7.2-mysql php7.2-xml)
 ==== BASE ====
 
 echo -e "\e[32m---------------------------------------------\e[0m"
@@ -15,8 +15,6 @@ for item in ${remover[*]}
 do
     apt-get remove --purge -y $item
 done
-
-
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31m  Verificamos se as dependencias\e[0m"
@@ -33,19 +31,20 @@ do
 	 else
 	  echo -e "\e[92m   - $item \e[1m Já instalado \e[0m"
 	fi
-
 done
-
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 
-apt-get update && apt-get upgrade -y
-
-
+#apt-get update && apt-get upgrade -y
 
 echo -e "\e[32m---------------------------------------------\e[0m"
 echo -e "\e[31m Instalando Chaves ;)\e[0m"
 
+#chave Sury php7
+wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
+echo -e "\e[92m   - Chave PHP sury \e[1m instalado \e[0m"
+
+#Chade dbeaver
 wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
 echo -e "\e[92m   - Chave Dbeaver \e[1m instalado \e[0m"
 
@@ -75,6 +74,8 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 #dbeaver
 echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
 
+#PHP7
+echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 
 #Get Mysql Repository
 wget -O mysql.deb https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb && dpkg -i mysql.deb 
@@ -117,5 +118,11 @@ do
 	fi
 done
 
-cp .bach_aliases /home/carlos/
-cp .gitconfig /home/carlos/
+cp -i .bach_aliases $HOME
+cp -i .gitconfig $HOME/
+cp -i .bash_profile $HOME/.bash_profile
+cp -i .bashrc $HOME/.bashrc
+cp -i .profile $HOME/.profile
+cp -ir .bash_it $HOME/.bash_it
+
+bash-it update
