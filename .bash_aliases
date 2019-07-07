@@ -27,12 +27,32 @@ alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 alias dc='docker-compose '
-alias sc='php bin/console '
-alias dcu='docker-compose up -d'
-alias server='php bin/console server:start'
-
+alias sy='php bin/console '
+alias dcu='dc up -d'
 alias project='cd ~/Project/'
 
+# Usado para iniciar o Php Server para o symfony
+function server(){ sy server:$1; }
+
+# Utilizado para clonar repositorios do gitlab interno
+# Já iniciando  o git flow
+
+function gitclone() {
+  com_porta=$(echo $1 | sed "s/:/:8990\//g");
+  git clone 'ssh://'$com_porta $2;
+  cd $2
+  git flow init
+}
+
+function porta() {
+ sudo -v
+ echo "$(sudo netstat -tlpn | grep $1)";
+}
+
+function dump-env()
+{
+ composer dump-env $1;
+}
 
 # GIT FLOW ALIASES
 
